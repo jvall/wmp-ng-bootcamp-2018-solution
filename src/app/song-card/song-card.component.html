@@ -1,0 +1,15 @@
+<mat-card class="example-card">
+  <img mat-card-image src="{{coverImg}}" alt="{{artist}}">
+  <mat-card-content>
+    <p>
+      {{name}}
+    </p>
+    <p>
+      {{artist}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="playSong()" mat-button>PLAY</button>
+    <button (click)="favoriteSong()" mat-button [disabled]="isFavorited">{{isFavorited ? 'Favorited' : 'Favorite'}}</button>
+  </mat-card-actions>
+</mat-card>

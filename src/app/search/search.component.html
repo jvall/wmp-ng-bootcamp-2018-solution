@@ -1,0 +1,27 @@
+<mat-card>
+	<mat-card-content>
+		<h2 class="example-h2">What would you like to do?</h2>
+		<mat-tab-group class="demo-tab-group">
+			<mat-tab label="Search">
+				<div class="demo-tab-content">
+					<mat-form-field class="example-full-width">
+						<input (input)="onSearchInput($event)" matInput placeholder="Search for a song">
+					</mat-form-field>
+					<audio *ngIf="songToPlay" src="{{songToPlay}}" autoplay></audio>
+					<div class="results-container">
+						<app-song-card *ngFor="let result of searchResults" (play)="playSong(result.previewUrl)" (favorite)="favoriteSong(result.id)"
+						 [name]="result.name" [coverImg]="result.coverImg" [artist]="result.artist" [isFavorited]="isInFavoritesList(result.id)"></app-song-card>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="View Favorites">
+				<div class="demo-tab-content">
+					<div class="results-container">
+						<app-song-card *ngFor="let favorite of favorites" (play)="playSong(favorite.previewUrl)" (favorite)="favoriteSong(favorite.id)"
+						 [name]="favorite.name" [coverImg]="favorite.coverImg" [artist]="favorite.artist" [isFavorited]="isInFavoritesList(favorite.id)"></app-song-card>
+					</div>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</mat-card-content>
+</mat-card>
